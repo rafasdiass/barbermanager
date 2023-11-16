@@ -1,0 +1,25 @@
+<form>
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>Excluir</mat-card-title>
+    </mat-card-header>
+    <br />
+    <mat-form-field appearance="fill">
+      <mat-label>Descrição</mat-label>
+      <input matInput [(ngModel)]="servico.name" name="name" disabled />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Valor</mat-label>
+      <input type="number" matInput [(ngModel)]="servico.price" name="price" disabled />
+    </mat-form-field>
+    <br />
+    <div class="actions">
+      <button mat-raised-button color="warn" class="button-cadastro" (click)="this.submit()">
+        EXCLUIR
+      </button>
+      <button mat-raised-button color="accent" (click)="this.cancel()" class="button-cancel">
+        CANCELAR
+      </button>
+    </div>
+  </mat-card>
+</form>

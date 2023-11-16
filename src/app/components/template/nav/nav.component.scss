@@ -1,0 +1,55 @@
+.sidenav {
+  width: 200px;
+}
+
+i {
+  padding-right: 15px;
+}
+
+.content {
+  overflow-y: auto;
+  max-height: calc(100vh - 104px);
+  margin-top: 64px;
+}
+
+.router-outlet-wrapper {
+  padding: 16px; /* Opcional: Adicione um preenchimento para melhorar a aparência */
+}
+
+.text {
+  margin-top: 2px;
+}
+
+.icon {
+  font-size: 30px;
+  height: 30px;
+  width: 30px;
+}
+
+.mdc-list {
+  padding: 0;
+}
+
+// Efeito item selecionado Navbar
+
+.mat-list-item.activated {
+  background-color: #e0e0e0;
+}
+
+// alinha os icones ao texto
+::ng-deep .mdc-list-item__primary-text {
+  display: flex;
+}
+
+.nav-list-subitem {
+  margin-left: 15px;
+}
+
+.card-header {
+  padding: 0;
+  justify-content: center;
+}
+
+.card {
+  margin-bottom: 20px;
+}

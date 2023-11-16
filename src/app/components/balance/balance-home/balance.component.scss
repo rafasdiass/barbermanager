@@ -1,0 +1,180 @@
+::ng-deep .table-card .mat-mdc-select-arrow-wrapper {
+  display: none !important; /* Remove a seta do mat-select */
+}
+
+::ng-deep .table-card .row-arrows .mat-mdc-form-field {
+  text-align: center !important; /* Centraliza o conteúdo */
+}
+
+::ng-deep .table-card .row-arrows .mat-mdc-form-field-subscript-wrapper {
+  display: none;
+}
+
+::ng-deep .table-card .row-arrows .mdc-line-ripple::before,
+.mdc-line-ripple::after {
+  border-bottom-style: unset !important;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.row-arrows {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.text-green {
+  color: rgb(18, 150, 18);
+}
+
+.text-red {
+  color: #ff0000;
+}
+
+.month {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin: 20px 0;
+}
+
+div.center {
+  justify-content: center;
+}
+
+.table-card {
+  flex: 1;
+  border-radius: 5px;
+  display: flex;
+  padding: 5px 20px;
+  justify-content: flex-start;
+  align-items: center;
+  box-shadow: 0 3px 5px #222222;
+  background-color: #474747;
+  border: none;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.icon {
+  display: flex;
+  align-items: center;
+}
+.icon-img {
+  font-size: 40px;
+}
+
+.green {
+  color: rgb(18, 150, 18);
+}
+
+.red {
+  color: #ff0000;
+}
+
+.yellow {
+  color: #919300;
+}
+
+.title {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  font-weight: 300;
+  color: #9b9b9b;
+}
+
+.despesas {
+  margin: 0 20px;
+}
+
+.value {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.align-elements {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-value-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 0.5rem;
+}
+
+.title-card {
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+}
+
+h2 {
+  margin-top: 0;
+  color: white;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+
+p {
+  color: white;
+}
+
+.green-value {
+  h2 {
+    color: rgb(1, 244, 1);
+  }
+  p {
+    color: rgb(1, 244, 1);
+  }
+}
+
+.expense-value {
+  h2 {
+    color: rgb(255, 44, 44);
+  }
+  p {
+    color: rgb(255, 44, 44);
+  }
+}
+
+.total-title {
+  color: white;
+}
+
+@media screen and (max-width: 807px) {
+  .despesas {
+    margin: 0;
+  }
+
+  .table-card {
+    margin-bottom: 20px;
+    width: -webkit-fill-available;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+}

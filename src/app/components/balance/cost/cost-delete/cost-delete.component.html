@@ -1,0 +1,34 @@
+<form>
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>Exclusão de Custo</mat-card-title>
+    </mat-card-header>
+    <br />
+    <mat-form-field appearance="fill">
+      <mat-label>Descrição</mat-label>
+      <input matInput [(ngModel)]="cost.description" name="description" disabled />
+      <mat-icon matSuffix>description</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Valor</mat-label>
+      <input matInput [(ngModel)]="cost.value" name="value" disabled />
+      <mat-icon matSuffix>attach_money</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Data</mat-label>
+      <input matInput [matDatepicker]="picker" required [(ngModel)]="cost.costDate" name="date" disabled />
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <br />
+    <div class="actions">
+      <button mat-raised-button color="warn" class="button-cadastro" (click)="delete()">
+        EXCLUIR
+      </button>
+      <button mat-raised-button color="accent" (click)="cancel()" class="button-cancel">
+        CANCELAR
+      </button>
+    </div>
+  </mat-card>
+</form>

@@ -1,0 +1,104 @@
+<form class="example-form" ngNoForm>
+  <mat-card class="card">
+
+    <mat-checkbox *ngIf="checkBoxShow" class="example-margin" [(ngModel)]="isMilitary">Miltar</mat-checkbox>
+
+    <div class="nome-container">
+
+      <mat-form-field class="example-full-width nome">
+        <mat-label>Cliente</mat-label>
+        <input type="text" placeholder="Selecione um cliente" aria-label="Cliente" matInput
+          [formControl]="clientFormControl" [matAutocomplete]="auto" (input)="checkExistingClient()">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="clienteSelecionado($event)">
+          <mat-option *ngFor="let client of filteredClients | async" [value]="client.name">
+            {{(client.pg === undefined ? '': client.pg) + ' ' + client.name + ' ' +
+            (client.esqd === undefined ? '': (' - ' + client.esqd))}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field class="pg" *ngIf="isMilitary">
+        <mat-label>P/G</mat-label>
+        <mat-select [(ngModel)]="this.client.pg" name="pg">
+          <mat-option *ngFor="let pg of this.pg" value="{{ pg }}">{{ pg
+            }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" *ngIf="isMilitary" class="num">
+        <mat-label>Nº</mat-label>
+        <input matInput type="number" [(ngModel)]="client.num" name="num" />
+      </mat-form-field>
+
+      <mat-form-field *ngIf="isMilitary" class="squad">
+        <mat-label>Esqd</mat-label>
+        <mat-select [(ngModel)]="client.esqd" name="esqd">
+          <mat-option *ngFor="let squad of squad" value="{{ squad }}">{{ squad }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-icon-button color="accent" class="" *ngIf="showCreateButton" (click)="criarCliente($event)">
+        <i class="material-icons">add</i>
+      </button>
+    </div>
+    <mat-form-field class="example-chip-list">
+      <mat-label>Serviços</mat-label>
+      <mat-chip-grid #chipGrid aria-label="Seleção de serviços">
+        <mat-chip-row *ngFor="let selectedServico of selectedServicos" (removed)="remove(selectedServico)">
+          {{ selectedServico.name + " R$ " + selectedServico.price?.toFixed(2) }}
+          <button matChipRemove [attr.aria-label]="'remove ' + selectedServico.name">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip-row>
+      </mat-chip-grid>
+      <input placeholder="Novo serviço..." #servicoInput [formControl]="servicoCtrl" [matChipInputFor]="chipGrid"
+        [matAutocomplete]="service" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" />
+      <mat-autocomplete #service="matAutocomplete" (optionSelected)="selected($event)">
+        <mat-option *ngFor="let servico of filteredServicos | async" [value]="servico.name">
+          {{ servico.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Prefissional</mat-label>
+      <mat-select [(ngModel)]="this.professional.id" name="id">
+        <mat-option *ngFor="let professional of professionals" [value]="professional.id">
+          {{professional.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <mat-label>Data serviço</mat-label>
+      <input matInput [matDatepicker]="picker" required [(ngModel)]="serviceExecuted.serviceDate" name="serviceDate" />
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Método pagamento</mat-label>
+      <mat-select [(ngModel)]="this.serviceExecuted.paymentMethod" name="paymentMethod">
+        <mat-option *ngFor="let paymentMethod of paymentMethods" [value]="paymentMethod.value">
+          {{paymentMethod.label}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field
+      *ngIf="this.serviceExecuted.paymentMethod !== undefined && this.serviceExecuted.paymentMethod !== 'Installments'">
+      <mat-label>Data pagamento</mat-label>
+      <input matInput [matDatepicker]="picker" required [(ngModel)]="serviceExecuted.paymentDate" name="paymentDate" />
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <br />
+    <mat-card-title class="valor">
+      VALOR: R$ {{ this.value().toFixed(2).toString().replace(".", ",") }}
+    </mat-card-title>
+    <div class="actions">
+      <button mat-raised-button (click)="salvar($event)" class="button-cadastro" color="accent">SALVAR</button>
+      <button mat-raised-button color="warn" (click)="this.cancel()" class="button-cancel"> CANCELAR </button>
+    </div>
+  </mat-card>
+
+</form>

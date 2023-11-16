@@ -1,0 +1,52 @@
+<form>
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>Cadastro de Funcionário</mat-card-title>
+    </mat-card-header>
+    <br />
+
+    <mat-form-field appearance="fill">
+      <mat-label>Nome</mat-label>
+      <input matInput [(ngModel)]="user.name" name="name" disabled />
+      <mat-icon matSuffix>person</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="user.email" name="email" disabled />
+      <mat-icon matSuffix>mail</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Telefone</mat-label>
+      <input
+        mask="(00) 00000-0000"
+        disabled
+        matInput
+        [(ngModel)]="user.phone"
+        name="phone"
+      />
+      <mat-icon matSuffix>phone</mat-icon>
+      <mat-hint>Incluir código de área</mat-hint>
+    </mat-form-field>
+    <br />
+    <div class="actions">
+      <button
+        mat-raised-button
+        color="warn"
+        class="button-cadastro"
+        (click)="this.delete()"
+      >
+        EXCLUIR
+      </button>
+      <button
+        mat-raised-button
+        color="accent"
+        (click)="this.cancel()"
+        class="button-cancel"
+      >
+        CANCELAR
+      </button>
+    </div>
+  </mat-card>
+</form>

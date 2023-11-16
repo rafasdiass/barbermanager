@@ -1,0 +1,90 @@
+<mat-sidenav-container class="container">
+  <!-- Sidenav para desktops -->
+  <mat-sidenav #desktopSidenav class="desktop-sidenav" *ngIf="!isMobile && isLogged" mode="side"
+    [opened]="isSidenavOpen" fixedInViewport="true" fixedTopGap="64" fixedBottomGap="40">
+    <mat-nav-list class="nav-list">
+      <a mat-list-item routerLink="/">
+        <i class="material-icons">home</i>
+        <span class="text">INICIO</span>
+      </a>
+      <a mat-list-item routerLink="/company" *ngIf="isAdmin">
+        <i class="material-icons">account_balance</i>
+        <span class="text">EMPRESAS</span>
+      </a>
+      <a mat-list-item routerLink="/employee" *ngIf="isAdmin">
+        <i class="material-icons">manage_accounts</i>
+        <span class="text">FUNCIONÁRIOS</span>
+      </a>
+      <a mat-list-item routerLink="/service" *ngIf="isAdmin">
+        <i class="material-icons">settings</i>
+        <span class="text">SERVIÇOS</span>
+      </a>
+      <a mat-list-item routerLink="/client">
+        <i class="material-icons">people</i>
+        <span class="text">CLIENTES</span>
+      </a>
+      <a mat-list-item routerLink="/balance" *ngIf="isAdmin">
+        <i class="material-icons">paid</i>
+        <span class="text">BALANÇO</span>
+      </a>
+      <a mat-list-item (click)="this.toggleSubitem()">
+        <i class="material-icons">line_axis</i>
+        <span class="text">RELATÓRIOS</span>
+      </a>
+      <mat-nav-list class="nav-list-subitem" *ngIf="this.isSubitemOpen">
+        <a mat-list-item routerLink="/reporting/clients">Cliente</a>
+        <!-- <a mat-list-item routerLink="/" *ngIf="isAdmin">Funcionário</a> -->
+        <!-- <a mat-list-item routerLink="/" *ngIf="isAdmin">Serviço</a> -->
+        <!-- <a mat-list-item routerLink="/" *ngIf="isAdmin">Completo</a> -->
+        <!-- Adicione mais subitens conforme necessário -->
+      </mat-nav-list>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!-- Conteúdo do sidenav para dispositivos móveis -->
+  <mat-sidenav #desktopSidenav class="desktop-sidenav" *ngIf="isMobile && isLogged" mode="over" [opened]="isSidenavOpen"
+    fixedInViewport="true" fixedTopGap="64" fixedBottomGap="40">
+    <mat-nav-list class="nav-list">
+      <a mat-list-item routerLink="/" (click)="this.closeNavSide()">
+        <i class="material-icons">home</i>
+        <span class="text">INÍCIO</span>
+      </a>
+      <a mat-list-item routerLink="/company" (click)="this.closeNavSide()" *ngIf="isAdmin">
+        <i class="material-icons">account_balance</i>
+        <span class="text">EMPRESAS</span>
+      </a>
+      <a mat-list-item routerLink="/employee" (click)="this.closeNavSide()" *ngIf="isAdmin">
+        <i class="material-icons">manage_accounts</i>
+        <span class="text">FUNCIONÁRIOS</span>
+      </a>
+      <a mat-list-item routerLink="/service" (click)="this.closeNavSide()" *ngIf="isAdmin">
+        <i class="material-icons">settings</i>
+        <span class="text">SERVIÇOS</span>
+      </a>
+      <a mat-list-item routerLink="/client" (click)="this.closeNavSide()">
+        <i class="material-icons">people</i>
+        <span class="text">CLIENTES</span>
+      </a>
+      <a mat-list-item routerLink="/balance" (click)="this.closeNavSide()" *ngIf="isAdmin">
+        <i class="material-icons">paid</i>
+        <span class="text">BALANÇO</span>
+      </a>
+      <a mat-list-item (click)="this.toggleSubitem()">
+        <i class="material-icons">line_axis</i>
+        <span class="text">RELATÓRIOS</span>
+      </a>
+      <mat-nav-list class="nav-list-subitem" *ngIf="this.isSubitemOpen">
+        <a mat-list-item routerLink="/reporting/clients" (click)="this.closeNavSide()">Cliente</a>
+        <!-- <a mat-list-item routerLink="/" (click)="this.closeNavSide()" *ngIf="isAdmin">Funcionário</a> -->
+        <!-- <a mat-list-item routerLink="/" (click)="this.closeNavSide()" *ngIf="isAdmin">Serviço</a> -->
+        <!-- <a mat-list-item routerLink="/" (click)="this.closeNavSide()" *ngIf="isAdmin">Completo</a> -->
+        <!-- Adicione mais subitens conforme necessário -->
+      </mat-nav-list>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="content">
+    <div class="router-outlet-wrapper">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

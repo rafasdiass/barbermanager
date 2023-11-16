@@ -1,0 +1,28 @@
+<div class="logo-container">
+  <img class="logo" src="../../../assets/logo.png" alt="">
+
+</div>
+
+<form class="form-container">
+
+  <mat-form-field class="form-field">
+    <mat-label>Email</mat-label>
+    <input matInput [(ngModel)]="user.email" name="email" placeholder="example@email.com" />
+    <mat-icon matSuffix>person</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field class="form-field">
+    <mat-label>Senha</mat-label>
+    <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="user.password" placeholder="*********"
+      name="password" />
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="hide">
+      <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <button mat-raised-button color="accent" class="login-button" (click)="this.onSubmit()">
+    <mat-icon>login</mat-icon>
+    Login
+  </button>
+</form>

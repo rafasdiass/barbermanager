@@ -1,0 +1,27 @@
+<form>
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>Cadastro de Serviço</mat-card-title>
+    </mat-card-header>
+    <br />
+    <mat-form-field appearance="fill">
+      <mat-label>Descrição</mat-label>
+      <input matInput [(ngModel)]="servico.name" name="name" required />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Valor</mat-label>
+
+      <input type="number" matInput [(ngModel)]="servico.price" name="price" required />
+      <span *ngIf="servico.price" matTextPrefix>R$&nbsp;</span>
+    </mat-form-field>
+    <br />
+    <div class="actions">
+      <button mat-raised-button color="accent" class="button-cadastro" (click)="this.submit()">
+        CADASTRAR SERVIÇO
+      </button>
+      <button mat-raised-button color="warn" (click)="this.cancel()" class="button-cancel">
+        CANCELAR
+      </button>
+    </div>
+  </mat-card>
+</form>

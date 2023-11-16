@@ -1,0 +1,80 @@
+<form ngNoForm>
+  <mat-card class="card">
+    <div class="row">
+      <!-- CAMPO POSTO E GRADUAÇÃO -->
+      <mat-form-field *ngIf="this.clientService.isMilitary" class="pg">
+        <mat-label>P/G</mat-label>
+        <mat-select [(ngModel)]="client.pg" name="pg" [disabled]="this.clientService.isDelete">
+          <mat-option [disabled]="this.clientService.isDelete" *ngFor="let pg of this.clientService.pg"
+            value="{{ pg }}">{{ pg }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!-- CAMPO NUMERO -->
+      <mat-form-field appearance="fill" *ngIf="this.clientService.isMilitary" class="num">
+        <mat-label>Nº</mat-label>
+        <input matInput type="number" [(ngModel)]="client.num" name="num" [disabled]="this.clientService.isDelete" />
+      </mat-form-field>
+      <!-- CAMPO NOME -->
+      <mat-form-field appearance="fill" class="name">
+        <mat-label>Nome</mat-label>
+        <input matInput [(ngModel)]="client.name" name="name" [disabled]="this.clientService.isDelete" />
+      </mat-form-field>
+      <mat-form-field *ngIf="this.clientService.isMilitary" class="squad">
+        <mat-label>Esqd</mat-label>
+        <mat-select [(ngModel)]="client.esqd" name="esqd" [disabled]="this.clientService.isDelete">
+          <mat-option [disabled]="this.clientService.isDelete" *ngFor="let squad of this.clientService.squad"
+            value="{{ squad }}">{{ squad }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="row" *ngIf="!this.clientService.isEdit">
+      <mat-form-field appearance="fill" class="cep">
+        <mat-label>CEP</mat-label>
+        <input matInput [formControl]="cepControl" mask="00000-000" />
+        <mat-icon matSuffix>map</mat-icon>
+      </mat-form-field>
+      <mat-form-field class="rua">
+        <mat-label>Rua</mat-label>
+        <input matInput [(ngModel)]="logradouro" name="logradouro" />
+      </mat-form-field>
+    </div>
+
+    <div class="row" *ngIf="!this.clientService.isEdit">
+      <mat-form-field class="numero">
+        <mat-label>Numero</mat-label>
+        <input matInput [(ngModel)]="numero" name="numero" />
+      </mat-form-field>
+      <mat-form-field class="bairro">
+        <mat-label>Bairro</mat-label>
+        <input matInput [(ngModel)]="bairro" name="bairro" />
+      </mat-form-field>
+      <mat-form-field class="city">
+        <mat-label>Cidade</mat-label>
+        <input matInput [(ngModel)]="city" name="city" />
+      </mat-form-field>
+    </div>
+    <mat-form-field appearance="fill" *ngIf="this.clientService.isEdit || this.clientService.isDelete">
+      <mat-label>Endereço</mat-label>
+      <input matInput [(ngModel)]="client.address" name="address" [disabled]="this.clientService.isDelete" />
+      <mat-icon matSuffix>map</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Telefone</mat-label>
+      <input mask="00-00000-0000" matInput [(ngModel)]="client.phone" name="phone"
+        [disabled]="this.clientService.isDelete" />
+      <mat-icon matSuffix>phone</mat-icon>
+      <mat-hint>Incluir código de área</mat-hint>
+    </mat-form-field>
+    <br />
+    <div class="actions">
+      <button mat-raised-button color="{{ this.clientService.isDelete ? 'warn' : 'accent' }}" class="button-cadastro"
+        (click)="this.submit($event)">
+        {{ this.clientService.isDelete ? "EXCLUIR" : "SALVAR" }}
+      </button>
+      <button mat-raised-button color="{{ this.clientService.isDelete ? 'accent' : 'warn' }}" (click)="this.cancel()"
+        class="button-cancel">
+        CANCELAR
+      </button>
+    </div>
+  </mat-card>
+</form>

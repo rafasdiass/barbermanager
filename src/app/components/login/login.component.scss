@@ -1,0 +1,27 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-field {
+  width: 400px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-button {
+  width: 400px;
+  margin-top: 16px;
+}
+
+.logo {
+  width: 200px;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}

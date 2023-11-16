@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>Empresas do Usuário</h1>
+  <p *ngIf="companies.length === 0"> Por gentileza é necessário cadastrar uma empresa antes de continuar <a
+      mat-raised-button routerLink="/company">Clique Aqui </a></p>
+  <ul>
+    <li *ngFor="let company of companies">
+      <button mat-button (click)="this.switchCompany(company._id !== undefined ? company._id : '')">
+        {{ company.name }}
+      </button>
+    </li>
+  </ul>
+</div>

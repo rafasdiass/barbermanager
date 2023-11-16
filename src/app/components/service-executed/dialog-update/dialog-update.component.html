@@ -1,0 +1,38 @@
+<!-- <h1 mat-dialog-title>Hi {{data.name}}</h1>
+<div mat-dialog-content>
+  <p>What's your favorite animal?</p>
+  <mat-form-field>
+    <mat-label>Favorite Animal</mat-label>
+    <input matInput [(ngModel)]="data.animal">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+</div> -->
+<h1 mat-dialog-title>Registrar Pagamento</h1>
+
+<div class="container" mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Método pagamento</mat-label>
+    <mat-select [(ngModel)]="serviceExecuted.paymentMethod" name="paymentMethod">
+      <mat-option *ngFor="let paymentMethod of paymentMethods" [value]="paymentMethod.value">
+        {{paymentMethod.label}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Data Pagamento</mat-label>
+    <input matInput [matDatepicker]="picker" required [(ngModel)]="serviceExecuted.paymentDate" name="paymentDate" />
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>
+
+<div class="actions" mat-dialog-actions>
+  <button mat-raised-button [mat-dialog-close]="serviceExecuted" (click)="this.update()" cdkFocusInitial
+    class="button-cadastro" color="accent">Salvar</button>
+  <button mat-raised-button [mat-dialog-close]="serviceExecuted" (click)="this.onNoClick()" cdkFocusInitial
+    class="margin" color="warn">Fechar</button>
+</div>

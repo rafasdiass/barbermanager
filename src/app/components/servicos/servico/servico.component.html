@@ -1,0 +1,10 @@
+<button class="add" mat-icon-button (click)="navigateToServiceCreate()">
+  <i class="material-icons">add</i>
+</button>
+<br />
+<app-servico-create *ngIf="this.servicoService.isCreate"></app-servico-create>
+<app-servico-update *ngIf="this.servicoService.isUpdate"></app-servico-update>
+<app-servico-delete *ngIf="this.servicoService.isDelete"></app-servico-delete>
+
+<br />
+<app-servico-read></app-servico-read>

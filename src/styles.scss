@@ -1,0 +1,72 @@
+/* You can add global styles to this file, and also import other style files */
+@import "@angular/material/theming";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+@include mat-core();
+
+$primary: mat-palette($mat-gray);
+$secondary: mat-palette($mat-gray, 200);
+$warn: mat-palette($mat-red, 900);
+
+$custom-theme: mat-dark-theme($primary, $secondary, $warn);
+
+@include angular-material-theme($custom-theme);
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #303030;
+}
+
+.basic-container {
+  padding: 5px;
+}
+
+.version-info {
+  font-size: 8pt;
+  float: right;
+}
+
+.card {
+  padding: 16px;
+}
+
+.button-cadastro {
+  margin-left: 20px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.edit {
+  margin-right: 10px;
+}
+
+.edit > i {
+  color: #939393;
+}
+
+.delete > i {
+  color: #939393;
+}
+
+app-footer {
+  flex-shrink: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .button-cadastro {
+    margin-left: 0px;
+    margin-top: 20px;
+  }
+  .actions {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}

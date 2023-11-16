@@ -1,0 +1,61 @@
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.pg,
+.num {
+  flex: 0.5;
+  margin-right: 20px;
+}
+.squad {
+  flex: 0.5;
+  margin-left: 20px;
+}
+.name {
+  flex: 2;
+}
+
+.rua {
+  margin-left: 20px;
+  flex: 2;
+}
+
+.city {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.cep {
+  flex: 1;
+}
+.cep {
+  flex: 1;
+}
+.cep {
+  flex: 1;
+}
+
+.numero {
+  margin-right: 20px;
+  flex: 1;
+}
+
+.bairro {
+  flex: 1;
+}
+
+@media screen and (max-width: 600px) {
+  .row {
+    flex-direction: column;
+  }
+  .rua,
+  .numero {
+    margin: 0;
+  }
+  .pg,
+  .num,
+  .squad {
+    margin-right: 0;
+  }
+}

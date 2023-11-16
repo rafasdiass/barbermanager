@@ -1,0 +1,47 @@
+.nome-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.nome {
+  flex: 2;
+}
+
+.pg,
+.num,
+.squad {
+  flex: 0.5;
+}
+
+.container-card {
+  padding: 15px;
+  background-color: #333;
+}
+
+.title {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.card-input {
+  margin-bottom: 20px;
+}
+
+.valor {
+  margin-left: 15px;
+}
+
+@media screen and (max-width: 600px) {
+  .nome-container {
+    flex-direction: column;
+  }
+  .nome,
+  .pg,
+  .num,
+  .squad {
+    width: 100%;
+  }
+}

@@ -1,0 +1,37 @@
+ .container {
+  margin: 20px;
+
+   h2 {
+     font-size: 24px;
+     margin-bottom: 10px;
+   }
+
+ul {
+     list-style: none;
+     padding: 0;
+
+     li {
+       margin-bottom: 10px;
+
+       button {
+         display: flex;
+         align-items: center;
+         background-color: #bbb7b7; /* Fundo preto */
+         color: #ffffff; /* Texto branco */
+         padding: 10px;
+         border: none;
+         border-radius: 4px;
+         cursor: pointer;
+         transition: background-color 0.3s ease;
+
+         &:hover {
+           background-color: #000000; /* Fundo preto escuro ao passar o mouse */
+         }
+
+         mat-icon {
+           margin-right: 10px;
+         }
+       }
+     }
+   }
+}

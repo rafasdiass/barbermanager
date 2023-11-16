@@ -1,0 +1,58 @@
+<form ngNoForm>
+  <mat-card class="card">
+    <mat-form-field appearance="fill">
+      <mat-label>Nome</mat-label>
+      <input matInput [(ngModel)]="company.name" name="name" required [disabled]="this.companyService.isDelete" />
+      <mat-icon matSuffix>apartment</mat-icon>
+    </mat-form-field>
+    <div class="address" *ngIf="!this.companyService.isEdit">
+      <mat-form-field appearance="fill" class="cep">
+        <mat-label>CEP</mat-label>
+        <input matInput [formControl]="cepControl" mask="00000-000" />
+        <mat-icon matSuffix>map</mat-icon>
+      </mat-form-field>
+      <mat-form-field class="rua">
+        <mat-label>Rua</mat-label>
+        <input matInput [(ngModel)]="logradouro" name="logradouro" required />
+      </mat-form-field>
+    </div>
+
+    <div class="address" *ngIf="!this.companyService.isEdit">
+      <mat-form-field class="numero">
+        <mat-label>Numero</mat-label>
+        <input matInput [(ngModel)]="numero" name="numero" required />
+      </mat-form-field>
+      <mat-form-field class="bairro">
+        <mat-label>Bairro</mat-label>
+        <input matInput [(ngModel)]="bairro" name="bairro" required />
+      </mat-form-field>
+      <mat-form-field class="city">
+        <mat-label>Cidade</mat-label>
+        <input matInput [(ngModel)]="city" name="city" required />
+      </mat-form-field>
+    </div>
+    <mat-form-field appearance="fill" *ngIf="this.companyService.isEdit || this.companyService.isDelete">
+      <mat-label>Endereço</mat-label>
+      <input matInput [(ngModel)]="company.address" name="address" required [disabled]="this.companyService.isDelete" />
+      <mat-icon matSuffix>map</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Telefone</mat-label>
+      <input mask="00-00000-0000" required matInput [(ngModel)]="company.phone" name="phone"
+        [disabled]="this.companyService.isDelete" />
+      <mat-icon matSuffix>phone</mat-icon>
+      <mat-hint>Incluir código de área</mat-hint>
+    </mat-form-field>
+    <br />
+    <div class="actions">
+      <button mat-raised-button color="{{ this.companyService.isDelete ? 'warn' : 'accent' }}" class="button-cadastro"
+        (click)="this.submit($event)">
+        {{ this.companyService.isDelete ? "EXCLUIR" : "SALVAR" }}
+      </button>
+      <button mat-raised-button color="{{ this.companyService.isDelete ? 'accent' : 'warn' }}" (click)="this.cancel()"
+        class="button-cancel">
+        CANCELAR
+      </button>
+    </div>
+  </mat-card>
+</form>
